@@ -1018,7 +1018,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-white);
   text-align: center;
+  padding: 0 1rem;
   overflow: hidden;
 }
 
@@ -1028,13 +1030,15 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  overflow: hidden;
 }
 
 .hero-bg {
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
+  filter: brightness(0.6) blur(2px); /* diminuire la luminosità e un leggero blur */
+  transition: filter 0.3s ease;
 }
 
 .hero-overlay {
@@ -1043,43 +1047,52 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-}
-
-.hero-content {
-  max-width: 800px;
-  padding: var(--space-32);
-  color: white;
+  background: rgba(25, 25, 25, 0.6); /* overlay nero semi-trasparente più marcato */
   z-index: 1;
 }
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  margin-bottom: var(--space-16);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9); /* ombra scura per contrasto */
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
-  margin-bottom: var(--space-16);
-  color: var(--color-ocra);
-  font-weight: var(--font-weight-medium);
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .hero-description {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-32);
-  opacity: 0.9;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-.hero-btn {
-  padding: var(--space-16) var(--space-32);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.btn-primary {
+  background-color: var(--color-ocra, #D2B48C);
+  color: var(--color-white, #fff);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
 }
+.btn-primary:hover {
+  background-color: var(--color-terra, #CD853F);
+}
+
 
 /* Buttons */
 .btn {
