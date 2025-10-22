@@ -1,0 +1,176 @@
+<!-- booking-form.html -->
+<div class="booking-form">
+    <h2>Prenota una Visita</h2>
+    <form id="visitForm" class="form-grid" action="/prenota" method="POST">
+        <div class="form-group">
+            <label for="name">Nome e Cognome *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Telefono</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Data della Visita *</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="time">Orario Preferito *</label>
+            <select id="time" name="time" required>
+                <option value="">Seleziona un orario</option>
+                <option value="10:00">10:00</option>
+                <option value="11:30">11:30</option>
+                <option value="15:00">15:00</option>
+                <option value="16:30">16:30</option>
+                <option value="18:00">18:00</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="guests">Numero di Persone *</label>
+            <select id="guests" name="guests" required>
+                <option value="">Seleziona</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 persone</option>
+                <option value="3">3 persone</option>
+                <option value="4">4 persone</option>
+                <option value="5">5 persone</option>
+                <option value="6+">6 o più persone</option>
+            </select>
+        </div>
+        
+        <div class="form-group full-width">
+            <label for="notes">Note Aggiuntive</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
+        
+        <div class="form-group full-width">
+            <label class="checkbox-label">
+                <input type="checkbox" name="privacy" required>
+                Ho letto e accetto la <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a> *
+            </label>
+        </div>
+        
+        <div class="form-group full-width">
+            <button type="submit" class="btn btn-primary">Prenota Ora</button>
+        </div>
+    </form>
+</div>
+
+<style>
+.booking-form {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form h2 {
+    font-family: var(--font-heading);
+    color: var(--color-wine);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-gray-dark);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-wine);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    font-size: var(--text-sm);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.2em;
+}
+
+.booking-form .btn {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--text-lg);
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-form {
+        padding: var(--spacing-lg);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('visitForm');
+    const dateInput = document.getElementById('date');
+    
+    // Imposta la data minima a domani
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    dateInput.min = tomorrow.toISOString().split('T')[0];
+    
+    // Imposta la data massima a 3 mesi da oggi
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 3);
+    dateInput.max = maxDate.toISOString().split('T')[0];
+    
+    // Gestione form
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Qui andrà la logica di invio del form
+        // Per ora mostriamo solo un alert
+        alert('Grazie per la tua prenotazione! Ti contatteremo presto per confermare la visita.');
+    });
+});
+</script>

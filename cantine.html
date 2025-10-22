@@ -1,0 +1,178 @@
+---
+layout: default
+title: Le Nostre Cantine - Abruzzo DiVino
+description: Scopri le migliori cantine della Costa dei Trabocchi, dove tradizione e innovazione si fondono per creare vini d'eccellenza
+---
+
+<div class="hero">
+    <img src="{{ '/assets/images/cantine-hero.jpg' | relative_url }}" alt="Cantina tradizionale abruzzese" class="hero-image">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title animate-in">Le Nostre Cantine</h1>
+            <p class="hero-subtitle animate-in">Un viaggio attraverso le eccellenze vinicole della Costa dei Trabocchi</p>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="text-content animate-in">
+            <h2>Tradizione e Innovazione</h2>
+            <p class="lead">Le cantine della Costa dei Trabocchi sono un perfetto esempio di come la tradizione secolare della vinificazione si sposi con le più moderne tecniche di produzione. Ogni cantina ha una sua storia unica da raccontare, un suo modo particolare di interpretare il territorio attraverso il vino.</p>
+        </div>
+        
+        {% include virtual-tour.html %}
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="cantine-grid">
+            {% for cantina in site.cantine %}
+            <article class="cantina-card animate-in">
+                {% if cantina.image %}
+                <img src="{{ cantina.image | relative_url }}" alt="{{ cantina.title }}" class="cantina-image">
+                {% endif %}
+                <div class="cantina-content">
+                    <h3>{{ cantina.title }}</h3>
+                    <p>{{ cantina.excerpt | strip_html | truncate: 150 }}</p>
+                    <div class="cantina-details">
+                        <div class="detail">
+                            <i class="fas fa-wine-bottle"></i>
+                            <span>{{ cantina.vini }} vini prodotti</span>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ cantina.location }}</span>
+                        </div>
+                    </div>
+                    <a href="{{ cantina.url | relative_url }}" class="btn btn-outline">Scopri di Più</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="cta-content animate-in">
+                <h2>Prenota una Visita</h2>
+                <p class="lead">Vivi un'esperienza unica nelle nostre cantine. Degusta i nostri vini e scopri i segreti della vinificazione con i nostri esperti.</p>
+            </div>
+            {% include booking-form.html %}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Stili specifici per la pagina cantine */
+.text-content {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+}
+
+.text-content h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--color-wine);
+    margin-bottom: var(--spacing-md);
+}
+
+.lead {
+    font-size: var(--text-xl);
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+.cantine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+.cantina-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-normal);
+}
+
+.cantina-card:hover {
+    transform: translateY(-4px);
+}
+
+.cantina-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.cantina-content {
+    padding: var(--spacing-lg);
+}
+
+.cantina-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-wine);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cantina-details {
+    margin: var(--spacing-md) 0;
+    display: grid;
+    gap: var(--spacing-sm);
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-gray);
+}
+
+.detail i {
+    color: var(--color-wine);
+}
+
+.cta-section {
+    background-color: var(--color-cream);
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.cta-content {
+    text-align: left;
+}
+
+.cta-content h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--color-wine);
+    margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .cta-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-content {
+        text-align: center;
+    }
+    
+    .lead {
+        font-size: var(--text-lg);
+    }
+}
+</style>

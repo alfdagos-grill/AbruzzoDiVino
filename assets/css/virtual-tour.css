@@ -1,0 +1,123 @@
+/* Virtual Tour Styles */
+.virtual-tour {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-wine-dark);
+}
+
+.virtual-tour-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.virtual-tour-slide.active {
+    opacity: 1;
+}
+
+.virtual-tour-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.virtual-tour-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-lg);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+}
+
+.virtual-tour-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--spacing-xs);
+}
+
+.virtual-tour-content p {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+}
+
+.virtual-tour-controls {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    z-index: 2;
+}
+
+.prev-slide,
+.next-slide {
+    background-color: var(--color-wine);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.prev-slide:hover,
+.next-slide:hover {
+    background-color: var(--color-wine-dark);
+    transform: scale(1.1);
+}
+
+.slide-indicators {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.slide-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.slide-indicator.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .virtual-tour {
+        height: 400px;
+    }
+    
+    .virtual-tour-content h3 {
+        font-size: var(--text-xl);
+    }
+    
+    .virtual-tour-content p {
+        font-size: var(--text-base);
+    }
+    
+    .prev-slide,
+    .next-slide {
+        width: 32px;
+        height: 32px;
+    }
+}
