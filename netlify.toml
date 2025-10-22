@@ -1,0 +1,27 @@
+# Configurazione build
+[build]
+  command = "jekyll build"
+  publish = "_site"
+
+# Headers per sicurezza e performance
+[[headers]]
+  for = "/*"
+    [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "interest-cohort=()"
+
+# Redirect e rewrite
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
+
+# Configurazione forms
+[forms]
+  # Attiva la funzionalità forms di Netlify
+  [forms.contact]
+    name = "Contact Form"

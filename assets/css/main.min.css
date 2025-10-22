@@ -1,0 +1,45 @@
+/* Ottimizzazione del CSS originale */
+:root{--color-white:#fff;--color-black:#000;--color-cream-50:#fcfcf9;--color-cream-100:#ffffd;--color-gray-200:#f5f5f5;--color-gray-300:#a7a9a9;--color-gray-400:#777c7c;--color-slate-500:#626c71;--color-brown-600:#5e5240;--color-charcoal-700:#1f2121;--color-charcoal-800:#262828;--color-slate-900:#13343b;--color-teal-300:#32b8c6;--color-teal-400:#2da6b2;--color-teal-500:#21808d;--color-teal-600:#1d7480;--color-teal-700:#1a6873;--color-teal-800:#2996a1;--color-red-400:#ff5459;--color-red-500:#c0152f;--color-orange-400:#e68161;--color-orange-500:#a84b2f;--color-brown-600-rgb:94,82,64;--color-teal-500-rgb:33,128,141;--color-slate-900-rgb:19,52,59;--font-family-base:"FKGroteskNeue","Geist","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+
+/* Layout base */
+body{margin:0;padding:0;font-family:var(--font-family-base);line-height:1.5;color:var(--color-text);background:var(--color-background)}
+
+/* Typography */
+h1,h2,h3,h4,h5,h6{margin:0 0 1rem;font-weight:600;line-height:1.2}
+h1{font-size:2.5rem}
+h2{font-size:2rem}
+h3{font-size:1.75rem}
+h4{font-size:1.5rem}
+p{margin:0 0 1rem}
+a{color:var(--color-teal-500);text-decoration:none;transition:color .2s}
+a:hover{color:var(--color-teal-600)}
+
+/* Cantine */
+.cantina{max-width:800px;margin:2rem auto;padding:1rem}
+.cantina-header{margin-bottom:2rem;text-align:center}
+.cantina-image{max-width:100%;height:auto;border-radius:8px;margin:1rem 0}
+.cantina-meta{background:var(--color-cream-50);padding:1.5rem;border-radius:8px;margin:1rem 0}
+.cantina-meta > div{margin:0.5rem 0}
+.cantina-meta i{width:1.5rem;color:var(--color-teal-500)}
+.social-links{margin-top:1rem}
+.social-link{margin-right:1rem;color:var(--color-slate-500)}
+.social-link:hover{color:var(--color-teal-500)}
+
+/* Form */
+.form-control{display:block;width:100%;padding:0.5rem;margin-bottom:1rem;border:1px solid var(--color-gray-300);border-radius:4px}
+.btn{display:inline-block;padding:0.5rem 1rem;background:var(--color-teal-500);color:#fff;border:none;border-radius:4px;cursor:pointer}
+.btn:hover{background:var(--color-teal-600)}
+
+/* Responsive */
+@media (max-width: 768px){
+  .cantina{padding:0.5rem}
+  .cantina-meta{padding:1rem}
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark){
+  :root{
+    --color-background: var(--color-charcoal-700);
+    --color-text: var(--color-gray-200);
+  }
+}

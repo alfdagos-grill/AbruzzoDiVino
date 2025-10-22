@@ -1,0 +1,13 @@
+{% if include.type == "facebook" %}
+<div class="fb-share-button" 
+     data-href="{{ include.url }}" 
+     data-layout="button_count">
+</div>
+{% elsif include.type == "twitter" %}
+<a href="https://twitter.com/share" 
+   class="twitter-share-button" 
+   data-url="{{ include.url }}"
+   data-text="{{ include.title }}">
+    Tweet
+</a>
+{% endif %}

@@ -1,0 +1,86 @@
+---
+layout: default
+---
+<article class="cantina" itemscope itemtype="http://schema.org/Winery">
+    <header class="cantina-header">
+        <h1 class="cantina-title" itemprop="name">{{ page.title }}</h1>
+        {% if page.image %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="cantina-image" itemprop="image">
+        {% endif %}
+    </header>
+
+    <div class="cantina-meta">
+        {% if page.address %}
+        <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <i class="fas fa-map-marker-alt"></i>
+            <span itemprop="streetAddress">{{ page.address }}</span>
+            {% if page.city %}, <span itemprop="addressLocality">{{ page.city }}</span>{% endif %}
+            {% if page.region %}, <span itemprop="addressRegion">{{ page.region }}</span>{% endif %}
+        </div>
+        {% endif %}
+
+        {% if page.hours %}
+        <div class="hours" itemprop="openingHours">
+            <i class="far fa-clock"></i>
+            {{ page.hours }}
+        </div>
+        {% endif %}
+
+        {% if page.phone %}
+        <div class="phone">
+            <i class="fas fa-phone"></i>
+            <span itemprop="telephone">{{ page.phone }}</span>
+        </div>
+        {% endif %}
+
+        {% if page.email %}
+        <div class="email">
+            <i class="far fa-envelope"></i>
+            <a href="mailto:{{ page.email }}" itemprop="email">{{ page.email }}</a>
+        </div>
+        {% endif %}
+
+        {% if page.website %}
+        <div class="website">
+            <i class="fas fa-globe"></i>
+            <a href="{{ page.website }}" itemprop="url" target="_blank" rel="noopener">Visita il sito web</a>
+        </div>
+        {% endif %}
+
+        <div class="social-links">
+            {% if page.facebook %}
+            <a href="{{ page.facebook }}" class="social-link facebook" target="_blank" rel="noopener">
+                <i class="fab fa-facebook"></i>
+            </a>
+            {% endif %}
+            {% if page.instagram %}
+            <a href="{{ page.instagram }}" class="social-link instagram" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="cantina-content" itemprop="description">
+        {{ content }}
+    </div>
+
+    {% if page.wines %}
+    <div class="cantina-wines">
+        <h2>I Nostri Vini</h2>
+        <div class="wine-list">
+            {% for wine in page.wines %}
+            <div class="wine-item">
+                <h3>{{ wine.name }}</h3>
+                {% if wine.type %}
+                <p class="wine-type">{{ wine.type }}</p>
+                {% endif %}
+                {% if wine.description %}
+                <p class="wine-description">{{ wine.description }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</article>

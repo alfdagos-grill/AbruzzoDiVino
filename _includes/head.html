@@ -1,9 +1,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ site.description }}">
-  <meta name="keywords" content="vini abruzzo, cantine, montepulciano, trebbiano, costa dei trabocchi">
-  <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
   {% seo %}
+  
+  <link rel="stylesheet" href="{{ '/assets/css/main.min.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  {% feed_meta %}
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon/favicon-16x16.png' | relative_url }}">
+
+  {% if page.layout == 'cantina' %}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Winery",
+    "name": "{{ page.title }}",
+    "description": "{{ page.description }}",
+    "image": "{{ page.image | absolute_url }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ page.address }}",
+      "addressLocality": "{{ page.city }}",
+      "addressRegion": "{{ page.region }}"
+    },
+    "openingHours": "{{ page.hours }}",
+    "telephone": "{{ page.phone }}",
+    "url": "{{ page.website }}"
+  }
+  </script>
+  {% endif %}
 </head>
