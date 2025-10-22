@@ -1,12 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  {% include head.html %}
-  <body>
-    {% include header.html %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% seo %}
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    {% feed_meta %}
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon/favicon-16x16.png' | relative_url }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="{{ '/' | relative_url }}" class="logo">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}">
+            </a>
+            <nav>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="main-nav">
+                    <li><a href="{{ '/' | relative_url }}" class="nav-link">Home</a></li>
+                    <li><a href="{{ '/cantine/' | relative_url }}" class="nav-link">Le Cantine</a></li>
+                    <li><a href="{{ '/vini/' | relative_url }}" class="nav-link">I Vini</a></li>
+                    <li><a href="{{ '/news/' | relative_url }}" class="nav-link">News</a></li>
+                    <li><a href="{{ '/contatti/' | relative_url }}" class="nav-link">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <main>
-      {{ content }}
+        {{ content }}
     </main>
-    {% include footer.html %}
-    <script src="{{ '/assets/js/app.js' | relative_url }}"></script>
-  </body>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Abruzzo DiVino</h3>
+                <p>Scopri l'eccellenza enologica abruzzese attraverso un viaggio tra le migliori cantine della Costa dei Trabocchi.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Via della Vigna, 123<br>66026 Ortona (CH)</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+390871123456">+39 0871 123456</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@abruzzodivino.it">info@abruzzodivino.it</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Seguici</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom text-center mt-3">
+                <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+        });
+    </script>
+</body>
 </html>

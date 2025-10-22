@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Scopri i Sapori dell'Abruzzo</h1>
+        <p class="lead">Un viaggio attraverso le migliori cantine della Costa dei Trabocchi</p>
+        <a href="{{ '/cantine/' | relative_url }}" class="btn btn-primary">Esplora le Cantine</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="text-center mb-3">Le Nostre Cantine</h2>
+        <div class="cantine-grid">
+            {% for cantina in site.cantine limit:3 %}
+            <div class="cantina-card">
+                {% if cantina.image %}
+                <img src="{{ cantina.image | relative_url }}" alt="{{ cantina.title }}" class="cantina-image">
+                {% endif %}
+                <div class="cantina-content">
+                    <h3>{{ cantina.title }}</h3>
+                    <p>{{ cantina.description | truncate: 150 }}</p>
+                    <a href="{{ cantina.url | relative_url }}" class="btn btn-secondary">Scopri di più</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ '/cantine/' | relative_url }}" class="btn btn-primary">Vedi tutte le cantine</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="text-center mb-3">Ultime News</h2>
+        <div class="news-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="news-card">
+                <div class="news-content">
+                    <h3>{{ post.title }}</h3>
+                    <p class="news-meta">
+                        <i class="far fa-calendar"></i> {{ post.date | date: "%d/%m/%Y" }}
+                        {% if post.author %}
+                        <span class="author"><i class="far fa-user"></i> {{ post.author }}</span>
+                        {% endif %}
+                    </p>
+                    <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="btn btn-secondary">Leggi di più</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="container text-center">
+        <h2>Scopri il Territorio</h2>
+        <p class="lead mb-3">Vieni a visitare le nostre cantine e degusta i migliori vini d'Abruzzo</p>
+        <a href="{{ '/contatti/' | relative_url }}" class="btn btn-primary">Contattaci</a>
+    </div>
+</section>
