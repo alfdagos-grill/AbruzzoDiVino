@@ -2,7 +2,7 @@ title: Abruzzo DiVino
 email: info@abruzzodivino.it
 description: "Le eccellenze enogastronomiche abruzzesi — vini, cantine e percorsi della Costa dei Trabocchi"
 baseurl: "/AbruzzoDiVino" # the subpath of your site
-url: "https://alfdagos.github.io" # your GitHub Pages URL
+url: "https://alfdagos-grill.github.io" # your GitHub Pages URL
 markdown: kramdown
 permalink: /:title/
 
