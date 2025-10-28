@@ -1,0 +1,114 @@
+/* CSS aggiuntivo per migliorare il contrasto e la leggibilità */
+
+/* Assicuriamoci che tutti i testi su sfondi chiari siano scuri */
+.section:not(.cta-section) h1,
+.section:not(.cta-section) h2,
+.section:not(.cta-section) h3,
+.section:not(.cta-section) h4,
+.section:not(.cta-section) h5,
+.section:not(.cta-section) h6 {
+  color: #1a1a1a !important;
+}
+
+.section:not(.cta-section) p,
+.section:not(.cta-section) li,
+.section:not(.cta-section) span,
+.section:not(.cta-section) div {
+  color: #2a2a2a !important;
+}
+
+/* Miglioramenti specifici per le card */
+.cantina-card h3,
+.news-card h3 {
+  color: #722F37 !important;
+  font-weight: 700 !important;
+}
+
+.cantina-card p,
+.news-card p {
+  color: #2a2a2a !important;
+  font-weight: 400 !important;
+}
+
+/* Sezione hero - assicuriamoci che il testo sia bianco puro */
+.hero h1,
+.hero .lead,
+.hero p {
+  color: #ffffff !important;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8) !important;
+}
+
+/* Sezione CTA - testo bianco su sfondo scuro */
+.cta-section h2,
+.cta-section p,
+.cta-section .lead {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* Footer - testo bianco */
+.site-footer h3,
+.site-footer p,
+.site-footer a,
+.footer-bottom p {
+  color: #ffffff !important;
+}
+
+.footer-section h3 {
+  color: #B8860B !important; /* Oro scuro per i titoli */
+}
+
+/* Navigation improvements */
+.nav-link {
+  color: #2a2a2a !important;
+  font-weight: 600 !important;
+}
+
+.nav-link:hover {
+  color: #722F37 !important;
+}
+
+/* Button improvements */
+.btn-primary {
+  background-color: #722F37 !important;
+  color: #ffffff !important;
+  border-color: #722F37 !important;
+}
+
+.btn-secondary {
+  color: #722F37 !important;
+  border-color: #722F37 !important;
+}
+
+.btn-secondary:hover {
+  background-color: #722F37 !important;
+  color: #ffffff !important;
+}
+
+/* Assicuriamoci che i meta testi abbiano sufficiente contrasto */
+.news-meta {
+  color: #4a4a4a !important;
+  font-weight: 500 !important;
+}
+
+/* Miglioramenti responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem !important;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.9) !important;
+  }
+  
+  .hero .lead {
+    font-size: 1.2rem !important;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8) !important;
+  }
+}
+
+/* Accessibilità - focus visibile migliorato */
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  outline: 3px solid #B8860B !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.3) !important;
+}
